@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Melkamu Sewunet | Contact Us</title>
+  <style>
+    /* CSS Variables for Light/Dark Mode */
+    :root {
+      --primary: #0066ff;
+      --primary-dark: #0052cc;
+      --bg-body: #1a1a1a;
+      --bg-secondary: #222222;
+      --bg-card: #2a2a2a;
+      --bg-form: #222222;
+      --text-primary: #e0e0e0;
+      --text-secondary: #b0b0b0;
+      --border-color: #444444;
+      --header-gradient: linear-gradient(135deg, #0066ff, #00ccff);
+      --footer-bg: #111111;
+      --shadow-color: rgba(0,0,0,0.3);
+      --input-bg: #333333;
+      --input-border: #444444;
+      --success-bg: #0a3b2e;
+      --success-text: #adebad;
+      --error-bg: #3a1e1e;
+      --back-home-bg: #334155;
+      --back-home-hover: #0066ff;
+      /* Welcome animation gradient colors */
+      --welcome-grad-1: #FFD166;
+      --welcome-grad-2: #FF6B6B;
+      --welcome-grad-3: #4ECDC4;
+      --welcome-grad-4: #9B5DE5;
+    }
+
+    body.light-mode {
+      --bg-body: #f0f4f8;
+      --bg-secondary: #ffffff;
+      --bg-card: #e8edf2;
+      --bg-form: #ffffff;
+      --text-primary: #1a2a3a;
+      --text-secondary: #4a5a6a;
+      --border-color: #cbd5e1;
+      --header-gradient: linear-gradient(135deg, #1a73e8, #34a853);
+      --footer-bg: #e2e8f0;
+      --shadow-color: rgba(0,0,0,0.1);
+      --input-bg: #f8fafc;
+      --input-border: #cbd5e1;
+      --success-bg: #d1fae5;
+      --success-text: #065f46;
+      --error-bg: #fee2e2;
+      --back-home-bg: #cbd5e1;
+      --back-home-hover: #0066ff;
+      --welcome-grad-1: #F4A261;
+      --welcome-grad-2: #E76F51;
+      --welcome-grad-3: #2A9D8F;
+      --welcome-grad-4: #8338EC;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Hero Section - Redesigned with Flex for image on right */
+    header {
+      background: var(--header-gradient);
+      color: white;
+      padding: 100px 20px;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    
+    .hero-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+    
+    .hero-text {
+      flex: 1;
+      text-align: left;
+    }
+    
+    .hero-text h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+    }
+    
+    .hero-text .title {
+      font-size: 1.5rem;
+      opacity: 0.95;
+      margin-bottom: 20px;
+    }
+    
+    .hero-text .description {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      opacity: 0.9;
+    }
+    
+    /* ===== WELCOME ANIMATION TEXT: "welcome to my contact us page" - RIGHT TO LEFT TRANSITION ===== */
+    .welcome-contact-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 25px;
+      overflow-x: hidden;
+    }
+    
+    .contact-welcome-text {
+      display: inline-block;
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      background: linear-gradient(
+        135deg,
+        var(--welcome-grad-1) 0%,
+        var(--welcome-grad-2) 25%,
+        var(--welcome-grad-3) 50%,
+        var(--welcome-grad-4) 75%,
+        var(--welcome-grad-1) 100%
+      );
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      white-space: normal;
+      word-break: break-word;
+      
+      /* Initial state: hidden to the right */
+      opacity: 0;
+      transform: translateX(120px) scale(0.96);
+      transition: transform 0.7s cubic-bezier(0.25, 0.72, 0.37, 0.99), opacity 0.6s ease-out;
+    }
+    
+    /* When animated class is added, slides from right to left */
+    .contact-welcome-text.animate-slide {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+    
+    /* Continuous shimmer effect after slide animation */
+    .contact-welcome-text.shimmer-glow {
+      background: linear-gradient(
+        135deg,
+        var(--welcome-grad-1) 0%,
+        var(--welcome-grad-2) 25%,
+        var(--welcome-grad-3) 50%,
+        var(--welcome-grad-4) 75%,
+        var(--welcome-grad-1) 100%
+      );
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: welcomeShimmer 4.5s ease infinite;
+    }
+    
+    @keyframes welcomeShimmer {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    
+    /* Hover effect for extra charm */
+    .contact-welcome-text:hover {
+      transform: translateX(0) scale(1.02);
+      transition: transform 0.25s ease;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+      cursor: default;
+    }
+    
+    .hero-image-right {
+      flex: 0 0 280px;
+      text-align: center;
+    }
+    
+    .profile-image {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid rgba(255,255,255,0.3);
+      box-shadow: 0 0 40px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .profile-image:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 50px rgba(255,255,255,0.2);
+    }
+    
+    /* Theme Toggle Button - TOP RIGHT CORNER */
+    .theme-toggle-wrapper {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      z-index: 100;
+    }
+    
+    .theme-toggle {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      transition: all 0.3s;
+    }
+    
+    .theme-toggle:hover {
+      background: rgba(255,255,255,0.35);
+      transform: scale(1.05);
+    }
+    
+    body.light-mode .theme-toggle {
+      background: rgba(0,0,0,0.15);
+      color: #1a2a3a;
+      border-color: rgba(0,0,0,0.2);
+    }
+    
+    .theme-icon {
+      font-size: 1.2rem;
+    }
+    
+    /* About Section */
+    .about {
+      padding: 80px 0;
+      background-color: var(--bg-secondary);
+      text-align: center;
+    }
+    
+    .about h2 {
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+    }
+    
+    .about p {
+      max-width: 700px;
+      margin: 20px auto;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+    }
+    
+    /* FIXED BACK TO HOME BUTTON - BOTTOM LEFT CORNER */
+    .back-home-fixed {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: var(--back-home-bg);
+      color: var(--text-primary);
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 20px var(--shadow-color);
+      transition: all 0.3s;
+      border: 1px solid var(--border-color);
+      font-size: 1rem;
+    }
+    
+    .back-home-fixed:hover {
+      background: var(--back-home-hover);
+      color: white;
+      transform: translateY(-4px);
+      box-shadow: 0 15px 25px rgba(0,102,255,0.4);
+    }
+    
+    /* Scroll to Top Button - BOTTOM RIGHT CORNER */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary);
+      color: white;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 999;
+      border: none;
+      font-size: 1.5rem;
+      box-shadow: 0 5px 15px var(--shadow-color);
+    }
+    
+    .scroll-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .scroll-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-5px);
+    }
+    
+    /* Contact Section */
+    .contact {
+      padding: 100px 0;
+      background-color: var(--bg-body);
+    }
+    
+    .contact h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 60px;
+      color: var(--text-primary);
+    }
+    
+    .contact-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 60px;
+      justify-content: center;
+    }
+    
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .contact-info h3 {
+      color: var(--primary);
+      margin-bottom: 30px;
+      font-size: 1.6rem;
+    }
+    
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+    }
+    
+    .info-item i {
+      font-size: 1.8rem;
+      color: var(--primary);
+      width: 40px;
+    }
+    
+    .info-item a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .info-item a:hover {
+      color: var(--primary);
+    }
+    
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+      background-color: var(--bg-form);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px var(--shadow-color);
+      transition: transform 0.2s;
+      border: 1px solid var(--border-color);
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 20px;
+      background-color: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(0,102,255,0.3);
+    }
+    
+    button {
+      background-color: var(--primary);
+      color: white;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+    
+    button:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+    }
+    
+    button:active {
+      transform: translateY(1px);
+    }
+    
+    .social-links {
+      margin-top: 40px;
+    }
+    
+    .social-links a {
+      color: var(--text-secondary);
+      font-size: 1.8rem;
+      margin-right: 20px;
+      transition: 0.3s;
+      display: inline-block;
+    }
+    
+    .social-links a:hover {
+      color: var(--primary);
+      transform: scale(1.2);
+    }
+    
+    /* Success Message */
+    #success-message {
+      display: none;
+      background: var(--success-bg);
+      color: var(--success-text);
+      text-align: center;
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      border-left: 4px solid #4ade80;
+    }
+    
+    /* Error / validation */
+    .error-input {
+      border-color: #ff6b6b !important;
+      background-color: var(--error-bg) !important;
+    }
+    
+    .field-error {
+      color: #ff8888;
+      font-size: 0.8rem;
+      margin-top: -12px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    
+    /* Footer with Visitor Counter */
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      background-color: var(--footer-bg);
+      color: var(--text-secondary);
+    }
+    
+    .footer-visitor {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 102, 255, 0.15);
+      backdrop-filter: blur(4px);
+      padding: 8px 20px;
+      border-radius: 50px;
+      margin-top: 20px;
+      border: 1px solid var(--border-color);
+    }
+    
+    .footer-visitor i {
+      font-size: 1rem;
+      color: #ffd966;
+    }
+    
+    .footer-visitor span {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .footer-visitor-count {
+      background: var(--primary);
+      color: white;
+      padding: 2px 12px;
+      border-radius: 40px;
+      font-family: monospace;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    
+    /* Twitter specific pulse */
+    .twitter-link {
+      position: relative;
+    }
+    .twitter-link:hover i {
+      animation: pulse 0.5s ease;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); text-shadow: 0 0 8px #1DA1F2; }
+      100% { transform: scale(1); }
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-flex {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .hero-text {
+        text-align: center;
+      }
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      .hero-text .title {
+        font-size: 1.3rem;
+      }
+      .hero-image-right {
+        flex: 0 0 auto;
+      }
+      .profile-image {
+        width: 200px;
+        height: 200px;
+      }
+      .contact-content { flex-direction: column; }
+      .theme-toggle-wrapper { top: 70px; right: 15px; }
+      .theme-toggle { padding: 6px 14px; font-size: 0.8rem; }
+      .back-home-fixed { bottom: 20px; left: 20px; padding: 8px 20px; font-size: 0.85rem; }
+      .scroll-top { bottom: 20px; right: 20px; width: 42px; height: 42px; font-size: 1.2rem; }
+      .footer-visitor { padding: 6px 16px; margin-top: 20px; }
+      .contact-welcome-text {
+        font-size: 1.4rem;
+      }
+      .welcome-contact-wrapper {
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .contact-welcome-text {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Hero Section with Image on Right -->
+  <header>
+    <!-- Theme Toggle Button - TOP RIGHT CORNER -->
+    <div class="theme-toggle-wrapper">
+      <button id="darkModeToggle" class="theme-toggle">
+        <span class="theme-icon" id="themeIcon">🌙</span>
+        <span id="themeText">Dark Mode</span>
+      </button>
+    </div>
+    
+    <div class="container">
+      <div class="hero-flex">
+        <div class="hero-text">
+          <!-- ANIMATED WELCOME TEXT: "welcome to my contact us page" with right-to-left slide -->
+          <div class="welcome-contact-wrapper">
+            <div class="contact-welcome-text" id="welcomeContactText">
+              ✨ welcome to my contact us page ✨
+            </div>
+          </div>
+          <h1>MELKAMU SEWUNET GEBEYEHU</h1>
+          <div class="title">Web Developer & Designer | Addis Ababa, Ethiopia</div>
+          <div class="description">Building clean and modern digital experiences</div>
+        </div>
+        <div class="hero-image-right">
+          <img src="melke.jpg" alt="Melkamu Sewunet" class="profile-image" id="profileImg">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section class="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>
+        Hi, I'm Melkamu. I'm a passionate web developer based in Addis Ababa. 
+        I love creating beautiful, responsive websites and solving real problems with code.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>Get In Touch</h2>
+      
+      <div class="contact-content">
+        
+        <!-- Contact Information -->
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Email</strong><br>
+              <a href="mailto:melkamusewunet573@gmail.com">melkamusewunet573@gmail.com</a>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <strong>Phone</strong><br>
+              <a href="tel:+251993031008">+251993031008</a>
+            </div>
+          </div>
+          
+          <!-- TELEGRAM -->
+          <div class="info-item">
+            <i class="fab fa-telegram"></i>
+            <div>
+              <strong>Telegram</strong><br>
+              <a href="https://t.me/Getsh21S2121" target="_blank">@Getsh21S2121</a>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <i class="fab fa-linkedin"></i>
+            <div>
+              <strong>LinkedIn</strong><br>
+              <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a>
+            </div>
+          </div>
+          
+          <!-- SOCIAL LINKS -->
+          <div class="social-links">
+            <a href="https://github.com/" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://x.com/MelkamuSew41090" target="_blank" class="twitter-link" aria-label="Twitter/X"><i class="fab fa-twitter"></i></a>
+            <a href="https://web.facebook.com/profile.php?id=61576291358428" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          </div>
+          <!-- dynamic timestamp -->
+          <div style="margin-top: 30px; font-size: 0.85rem; opacity: 0.7;">
+            <i class="fas fa-clock"></i> <span id="liveTimestamp">Loading time...</span>
+          </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <h3>Send Me a Message</h3>
+          <form id="contactForm" novalidate>
+            <input type="text" id="name" placeholder="Your Name *" required>
+            <div id="nameError" class="field-error"></div>
+            <input type="email" id="email" placeholder="Your Email *" required>
+            <div id="emailError" class="field-error"></div>
+            <input type="text" id="subject" placeholder="Subject *" required>
+            <div id="subjectError" class="field-error"></div>
+            <textarea id="message" rows="6" placeholder="Your Message *" required></textarea>
+            <div id="messageError" class="field-error"></div>
+            <button type="submit" id="sendBtn">Send Message <i class="fas fa-paper-plane"></i></button>
+          </form>
+          <div id="success-message">
+            <i class="fas fa-check-circle"></i> Message sent successfully! I'll reply soon.
+          </div>
+          <div id="formFeedback" style="font-size:0.8rem; margin-top: 10px; text-align:center; color:var(--text-secondary);"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer with Visitor Counter -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Melkamu Sewunet. All Rights Reserved. | <span id="footerYear"></span></p>
+      <p><i class="fas fa-code"></i> Built with passion in Ethiopia</p>
+      
+      <!-- VISITOR COUNTER -->
+      <div class="footer-visitor" id="visitorCounterFooter">
+        <i class="fas fa-eye"></i>
+        <span>Total Page Visits:</span>
+        <span class="footer-visitor-count" id="visitCountDisplay">0</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FIXED BACK TO HOME BUTTON - BOTTOM LEFT CORNER -->
+  <a href="index.html" class="back-home-fixed" id="backHomeFixedBtn">
+    <i class="fas fa-arrow-left"></i> Back to Home
+  </a>
+
+  <!-- SCROLL TO TOP BUTTON - BOTTOM RIGHT CORNER -->
+  <div class="scroll-top" id="scrollTopBtn">↑</div>
+
+  <script>
+    (function() {
+      // ======================= LIGHT / DARK MODE TOGGLE =======================
+      const themeToggle = document.getElementById('darkModeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+      const themeText = document.getElementById('themeText');
+      
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        themeIcon.textContent = '☀️';
+        themeText.textContent = 'Light Mode';
+      } else {
+        document.body.classList.remove('light-mode');
+        themeIcon.textContent = '🌙';
+        themeText.textContent = 'Dark Mode';
+      }
+      
+      function toggleTheme() {
+        if (document.body.classList.contains('light-mode')) {
+          document.body.classList.remove('light-mode');
+          localStorage.setItem('theme', 'dark');
+          themeIcon.textContent = '🌙';
+          themeText.textContent = 'Dark Mode';
+        } else {
+          document.body.classList.add('light-mode');
+          localStorage.setItem('theme', 'light');
+          themeIcon.textContent = '☀️';
+          themeText.textContent = 'Light Mode';
+        }
+      }
+      
+      themeToggle.addEventListener('click', toggleTheme);
+      
+      // ======================= WELCOME TEXT RIGHT-TO-LEFT ANIMATION =======================
+      const welcomeElement = document.getElementById('welcomeContactText');
+      if (welcomeElement) {
+        // Trigger slide animation after a short delay
+        setTimeout(() => {
+          welcomeElement.classList.add('animate-slide');
+        }, 120);
+        // After slide completes, add shimmer class for continuous gradient flow
+        setTimeout(() => {
+          if (welcomeElement) {
+            welcomeElement.classList.add('shimmer-glow');
+          }
+        }, 850);
+      }
+      
+      // ======================= VISITOR COUNTER =======================
+      function updateVisitorCounter() {
+        let visits = localStorage.getItem('contactPageVisits');
+        if (visits === null) {
+          visits = 1;
+        } else {
+          visits = parseInt(visits) + 1;
+        }
+        localStorage.setItem('contactPageVisits', visits);
+        const counterSpan = document.getElementById('visitCountDisplay');
+        if (counterSpan) {
+          counterSpan.innerText = visits;
+        }
+      }
+      updateVisitorCounter();
+
+      // ======================= LIVE TIMESTAMP =======================
+      function updateTimeStamp() {
+        const now = new Date();
+        const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+        const formatted = now.toLocaleDateString(undefined, options);
+        const timestampSpan = document.getElementById('liveTimestamp');
+        if (timestampSpan) {
+          timestampSpan.innerHTML = `<i class="far fa-calendar-alt"></i> ${formatted} • Addis Ababa`;
+        }
+        const footerYearSpan = document.getElementById('footerYear');
+        if (footerYearSpan) footerYearSpan.innerText = now.getFullYear();
+      }
+      updateTimeStamp();
+      setInterval(updateTimeStamp, 60000);
+
+      // ======================= SCROLL TO TOP BUTTON =======================
+      const scrollTopBtn = document.getElementById('scrollTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          scrollTopBtn.classList.add('show');
+        } else {
+          scrollTopBtn.classList.remove('show');
+        }
+      });
+      scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // ======================= FORM VALIDATION & SEND SIMULATION =======================
+      const form = document.getElementById('contactForm');
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const subjectInput = document.getElementById('subject');
+      const messageInput = document.getElementById('message');
+      const successDiv = document.getElementById('success-message');
+      const feedbackDiv = document.getElementById('formFeedback');
+      
+      function clearErrors() {
+        document.getElementById('nameError').innerHTML = '';
+        document.getElementById('emailError').innerHTML = '';
+        document.getElementById('subjectError').innerHTML = '';
+        document.getElementById('messageError').innerHTML = '';
+        nameInput.classList.remove('error-input');
+        emailInput.classList.remove('error-input');
+        subjectInput.classList.remove('error-input');
+        messageInput.classList.remove('error-input');
+        if (feedbackDiv) feedbackDiv.innerHTML = '';
+      }
+      
+      function isValidEmail(email) {
+        const re = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+        return re.test(email);
+      }
+      
+      function showError(fieldId, message) {
+        const errorDiv = document.getElementById(`${fieldId}Error`);
+        if (errorDiv) errorDiv.innerHTML = message;
+        const inputField = document.getElementById(fieldId);
+        if (inputField) inputField.classList.add('error-input');
+      }
+      
+      function validateForm() {
+        let isValid = true;
+        clearErrors();
+        
+        const nameVal = nameInput.value.trim();
+        if (nameVal === '') {
+          showError('name', '❌ Please enter your name');
+          isValid = false;
+        } else if (nameVal.length < 2) {
+          showError('name', '❌ Name must be at least 2 characters');
+          isValid = false;
+        }
+        
+        const emailVal = emailInput.value.trim();
+        if (emailVal === '') {
+          showError('email', '❌ Email address is required');
+          isValid = false;
+        } else if (!isValidEmail(emailVal)) {
+          showError('email', '❌ Please enter a valid email');
+          isValid = false;
+        }
+        
+        const subjectVal = subjectInput.value.trim();
+        if (subjectVal === '') {
+          showError('subject', '❌ Subject cannot be empty');
+          isValid = false;
+        } else if (subjectVal.length < 3) {
+          showError('subject', '❌ Subject must be at least 3 characters');
+          isValid = false;
+        }
+        
+        const messageVal = messageInput.value.trim();
+        if (messageVal === '') {
+          showError('message', '❌ Please write your message');
+          isValid = false;
+        } else if (messageVal.length < 10) {
+          showError('message', '❌ Message must be at least 10 characters');
+          isValid = false;
+        }
+        
+        return isValid;
+      }
+      
+      function sendFormData(formDataObj) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log('Form data sent:', formDataObj);
+            resolve({ success: true });
+          }, 400);
+        });
+      }
+      
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        successDiv.style.display = 'none';
+        if (feedbackDiv) feedbackDiv.innerHTML = '';
+        
+        if (!validateForm()) {
+          const firstError = document.querySelector('.error-input');
+          if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+        
+        const formPayload = {
+          name: nameInput.value.trim(),
+          email: emailInput.value.trim(),
+          subject: subjectInput.value.trim(),
+          message: messageInput.value.trim(),
+          timestamp: new Date().toISOString()
+        };
+        
+        const submitBtn = document.getElementById('sendBtn');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
+        
+        try {
+          await sendFormData(formPayload);
+          successDiv.style.display = 'block';
+          form.reset();
+          clearErrors();
+          if (feedbackDiv) {
+            feedbackDiv.innerHTML = '<span style="color:#4ade80;"><i class="fas fa-check"></i> Thanks for reaching out!</span>';
+            setTimeout(() => {
+              if (feedbackDiv) feedbackDiv.innerHTML = '';
+            }, 4000);
+          }
+          setTimeout(() => {
+            successDiv.style.display = 'none';
+          }, 5000);
+        } catch (error) {
+          if (feedbackDiv) {
+            feedbackDiv.innerHTML = '<span style="color:#ff8a7a;"><i class="fas fa-exclamation-triangle"></i> Network error.</span>';
+          }
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+        }
+      });
+      
+      // Character counter
+      const messageTextarea = messageInput;
+      const createCharCounter = () => {
+        let counterElement = document.getElementById('charCounterMsg');
+        if (!counterElement) {
+          const parentDiv = messageTextarea.parentNode;
+          const smallHint = document.createElement('div');
+          smallHint.id = 'charCounterMsg';
+          smallHint.style.fontSize = '0.7rem';
+          smallHint.style.textAlign = 'right';
+          smallHint.style.marginTop = '-12px';
+          smallHint.style.marginBottom = '10px';
+          smallHint.style.color = 'var(--text-secondary)';
+          parentDiv.insertBefore(smallHint, messageTextarea.nextSibling);
+          counterElement = smallHint;
+        }
+        const len = messageTextarea.value.length;
+        counterElement.innerHTML = `${len} / 500 characters`;
+        if (len > 500) {
+          counterElement.style.color = '#ffaa66';
+        } else {
+          counterElement.style.color = 'var(--text-secondary)';
+        }
+      };
+      messageTextarea.addEventListener('input', createCharCounter);
+      createCharCounter();
+      
+      // Dynamic greeting
+      const getGreeting = () => {
+        const hour = new Date().getHours();
+        if (hour < 12) return "Good morning! ☀️";
+        if (hour < 18) return "Good afternoon! 🌤️";
+        return "Good evening! 🌙";
+      };
+      const aboutParagraph = document.querySelector('.about p');
+      if (aboutParagraph && !aboutParagraph.nextElementSibling?.innerHTML?.includes("greeting")) {
+        const smallNote = document.createElement('small');
+        smallNote.style.display = 'block';
+        smallNote.style.marginTop = '12px';
+        smallNote.style.opacity = '0.8';
+        smallNote.style.color = 'var(--text-secondary)';
+        smallNote.innerHTML = `<i class="fas fa-smile-wink"></i> ${getGreeting()} Feel free to connect!`;
+        aboutParagraph.parentNode.appendChild(smallNote);
+      }
+      
+      // Profile image fallback
+      const profileImg = document.getElementById('profileImg');
+      if (profileImg) {
+        profileImg.onerror = function() {
+          this.src = "https://ui-avatars.com/api/?background=0066ff&color=fff&bold=true&size=200&name=Melkamu+Sewunet";
+        };
+      }
+      
+      // Hover effects for contact items
+      const infoItems = document.querySelectorAll('.info-item');
+      infoItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+          item.style.transform = 'translateX(5px)';
+          item.style.transition = '0.2s';
+        });
+        item.addEventListener('mouseleave', () => {
+          item.style.transform = 'translateX(0)';
+        });
+      });
+      
+      // Fixed Back to Home button hover
+      const backHomeFixed = document.getElementById('backHomeFixedBtn');
+      if (backHomeFixed) {
+        backHomeFixed.addEventListener('mouseenter', () => {
+          backHomeFixed.style.transform = 'translateY(-4px)';
+        });
+        backHomeFixed.addEventListener('mouseleave', () => {
+          backHomeFixed.style.transform = 'translateY(0)';
+        });
+      }
+      
+      console.log('✅ Contact page loaded: Welcome text "welcome to my contact us page" with right-to-left transition + vibrant gradient');
+    })();
+  </script>
+</body>
+</html>
